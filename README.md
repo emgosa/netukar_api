@@ -1,34 +1,34 @@
 # README
 
-* Ruby version
+* Ruby version  
   3.0.0
 
-* Rails version
+* Rails version  
   6.1.3
 
-* Configuration
+* Configuration  
   git clone https://github.com/emgosa/netukar_api.git
   bundle install
 
-* Database creation
-  rails db:create
+* Database creation  
+  rails db:create  
   rails db:migrate
 
-* Database initialization
+* Database initialization  
   rake fill:db
 
-* How to run the test suite
+* How to run the test suite  
   bundle exec rspec
 
-* Services (job queues, cache servers, search engines, etc.)
+* Services (job queues, cache servers, search engines, etc.)  
   Cache and Job queues with Redis and Sidekiq for Endpoint 2
 
-* Deployment instructions
-  redis-server
-  bundle exec sidekiq
-  rails s
+* Deployment instructions  
+  redis-server  
+  bundle exec sidekiq  
+  rails s  
 
-* Endpoints
+* Endpoints  
     1. localhost:3000/movies_ordered_by_created_at
     2. localhost:3000/season_with_episodes_ordered (stored in cache)
     3. localhost:3000/movies_seasons_ordered_by_created_at
