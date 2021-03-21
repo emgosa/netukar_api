@@ -1,0 +1,6 @@
+default: &default
+  timeout: 10
+
+development:
+  <<: *default
+  url: "redis://localhost:6379"
