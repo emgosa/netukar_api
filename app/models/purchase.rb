@@ -7,6 +7,7 @@ class Purchase < ApplicationRecord
   scope :alive, -> { where("begin_at < :time and end_at > :time", time: DateTime.now) }
 
   def available_for_purchase
+    return if user.nil?
     return unless user.purchases.alive.find_by(user_id: self.user_id, purchasable_id: self.purchasable_id, purchasable_type: self.purchasable_type)
     errors.add(:base, "The #{self.purchasable_type} is already in your library.")
   end
