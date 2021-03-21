@@ -1,8 +1,0 @@
-:verbose: true
-:timeout: 25
-:queues:
-  - critical
-  - default
-  - low
-development:
-  :concurrency: 5

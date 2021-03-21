@@ -3,7 +3,7 @@ class Season < ApplicationRecord
   has_many :episodes_ordered_by_season_number, -> { order('season_episode_number DESC') }, class_name: 'Episode'
   has_many :purchases, as: :purchasable, dependent: :destroy
   validates_presence_of :title, :plot, :number
-  after_save :create_json_cache
+  #after_save :create_json_cache
 
   scope :ordered_by_created_at, -> {order(created_at: :desc)}
 
@@ -24,6 +24,6 @@ class Season < ApplicationRecord
   private
 
   def create_json_cache
-    CreatePostsJsonCacheJob.perform_now
+    CreateSeasonsJsonCacheJob.perform_now
   end
 end
