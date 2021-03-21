@@ -25,6 +25,10 @@ class SeasonsController < ApplicationController
     head :no_content
   end
 
+  def seasons_with_episodes_ordered
+    render json: Season.ordered_by_created_at, include: :episodes_ordered_by_season_number
+  end
+
   private
 
   def season_params

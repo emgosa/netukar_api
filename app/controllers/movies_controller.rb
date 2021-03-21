@@ -25,6 +25,10 @@ class MoviesController < ApplicationController
     head :no_content
   end
 
+  def ordered_by_created_at
+    render json: Movie.ordered_by_created_at
+  end
+
   private
 
   def movie_params
