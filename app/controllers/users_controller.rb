@@ -28,7 +28,7 @@ class UsersController < ApplicationController
   end
 
   def library
-    render json: (Movie.alive_by_user(@user.id) + Season.alive_by_user(@user.id)).sort{|a,b| a.end_at <=> b.end_at }
+    render json: (Movie.alive_by_user(@user.id) + Season.alive_by_user(@user.id)).sort{|a,b| a.end_at <=> b.end_at }, only: :title
   end
 
   private
