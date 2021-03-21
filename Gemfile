@@ -32,7 +32,7 @@ group :development, :test do
   gem 'factory_bot_rails', '~> 6.1'
   gem 'faker', '~> 2.17'
   gem 'redis-rails', '~> 5.0', '>= 5.0.2'
-  #gem 'sidekiq', '~> 6.2'
+  gem 'sidekiq', '~> 6.1', '>= 6.1.3'
 end
 
 group :test do
