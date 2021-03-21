@@ -1,6 +1,5 @@
 class CreatePostsJsonCacheJob < ApplicationJob
-  include Sidekiq::Worker
-  sidekiq_options retry: false, queue: 'default'
+  queue_as :default
 
   def perform(*args)
     seasons = Season.includes(:episodes_ordered_by_season_number)

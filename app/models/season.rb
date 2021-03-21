@@ -24,6 +24,6 @@ class Season < ApplicationRecord
   private
 
   def create_json_cache
-    CreatePostsJsonCacheJob.perform_later
+    CreatePostsJsonCacheJob.perform_now
   end
 end
