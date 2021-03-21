@@ -26,7 +26,7 @@ class SeasonsController < ApplicationController
   end
 
   def seasons_with_episodes_ordered
-    seasons = Season.includes(:episodes_ordered_by_season_number)
+    seasons = Season.ordered_by_created_at.includes(:episodes_ordered_by_season_number)
     season_episodes = Rails.cache.fetch(Season.cache_key(seasons)) do
       seasons.to_json(include: :episodes_ordered_by_season_number)
     end
