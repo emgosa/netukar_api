@@ -1,11 +1,20 @@
 FactoryBot.define do
   factory :purchase do
-    quality { "MyString" }
-    price { 1.5 }
-    purchasable_id { 1 }
-    purchasable_type { "MyString" }
-    begin_at { "2021-03-21 09:50:53" }
-    end_at { "2021-03-21 09:50:53" }
-    user { nil }
+    factory :purchase_movie do
+      quality { "HD" }
+      price { 2.99 }
+      association :purchasable, factory: :season
+      begin_at { DateTime.now }
+      end_at { DateTime.now + 2.days }
+      user_id { nil }
+    end
+    factory :purchase_season do
+      quality { "HD" }
+      price { 2.99 }
+      association :purchasable, factory: :movie
+      begin_at { DateTime.now }
+      end_at { DateTime.now + 2.days }
+      user_id { nil }
+    end
   end
 end
