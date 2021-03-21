@@ -6,7 +6,9 @@ namespace :fill do
 
     Rake::Task['db:reset'].invoke
 
-    FactoryBot.create_list(:user_purchases, 1)
-
+    3.times do
+      FactoryBot.create_list(:user_purchases, 1)
+      sleep 1
+    end
   end
 end
