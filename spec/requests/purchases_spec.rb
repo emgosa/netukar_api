@@ -80,8 +80,8 @@ RSpec.describe "Purchases", type: :request do
       before { Purchase.create!(quality: 'HD', price: '2,99', purchasable_id: movie_id, purchasable_type: 'Movie', user_id: user_id, begin_at: DateTime.now, end_at: DateTime.now + 2.days) }
       before { post "/users/#{user_id}/purchases", params: valid_attributes }
 
-      it 'returns status code 400' do
-        expect(response).to have_http_status(400)
+      it 'returns status code 422' do
+        expect(response).to have_http_status(422)
         expect(response.body).to match(/The Movie is already in your library/)
       end
     end

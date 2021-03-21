@@ -11,16 +11,14 @@ class PurchasesController < ApplicationController
   end
 
   def create
-    begin
-      @user.purchases.create!(purchase_params)
-      render json: purchase_params, status: :created
+    @user.purchases.create!(purchase_params)
+    render json: purchase_params, status: :created
     rescue StandardError => e
       if e.message.include?("User has already been taken")
         render json: {error: "The #{purchase_params[:purchasable_type]} is already in your library.", status: 400}, status: :bad_request
       else
         render json: {error: e.message, status: 422}, status: :unprocessable_entity
       end
-    end
   end
 
   def update
@@ -36,7 +34,7 @@ class PurchasesController < ApplicationController
   private
 
   def purchase_params
-    params.permit(:quality, :price, :purchasable_id, :purchasable_type, :user_id, :begin_at, :end_at)
+    params.permit(:id, :quality, :price, :purchasable_id, :purchasable_type, :user_id, :begin_at, :end_at)
   end
 
   def set_user
@@ -44,6 +42,6 @@ class PurchasesController < ApplicationController
   end
 
   def set_purchase
-    @purchase = @user.purchases.find_by!(id: params[:id]) if @user
+    @purchase = @user.purchases.find(params[:id]) if @user
   end
 end

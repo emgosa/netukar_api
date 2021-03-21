@@ -36,6 +36,6 @@ class EpisodesController < ApplicationController
   end
 
   def set_episode
-    @episode = @season.episodes.find_by!(id: params[:id]) if @season
+    @episode = @season.episodes.find(params[:id]) if @season
   end
 end
